@@ -18,7 +18,7 @@ while True:
     choice = input("Please Enter Your choice: ")
 
     def input_data():
-        global values
+        global values,Min, Max, Sum, Average,values
 
         values = input().strip().split(" ")
         if (
@@ -37,8 +37,6 @@ while True:
 
         else:
             values = [int(x) for x in values]
-
-        global Min, Max, Sum, Average,values
         
         if type(values) is list and len(values) > 0 and type(values[0]) is list:
             Sum = sum(sum(row) for row in values)
@@ -52,9 +50,8 @@ while True:
         Average = Sum / len(values)
 
     def display_summary():
-        global values
+        global values,Min, Max, Sum, Average
         if values:
-            global Min, Max, Sum, Average
 
             if type(values) is list and len(values) > 0 and type(values[0]) is list:
                  Sum = sum(sum(row) for row in values)
@@ -148,6 +145,12 @@ while True:
             print("\nDataset Statistics:")
             for key, value in kwargs.items():
                 print(f"{key}: {value}")
+            if type(values) is list and len(values) > 0 and type(values[0]) is list:
+                for i in range(len(values)):
+                    print("-----------------\n")
+                    for j in range(len(values[i])):
+                        print(f"{j}",end="") 
+                print("---------------------")  
 
     match choice:
         case "1":
